@@ -1,4 +1,5 @@
 import os
+from collections import OrderedDict
 
 import pandas as pd
 import IPython
@@ -108,6 +109,15 @@ class Notebook(object):
         return _get_papermill_metadata(self.node, 'metrics', default={})
 
     @property
+    def durations(self):
+        ret = OrderedDict()
+        ret['total'] = self.metrics.get('duration')
+        for exec_index, value in _get_cell_exec_durations(self.node):
+            if exec_index is not None:
+                ret['cell' + str(exec_index)] = value
+        return ret
+
+    @property
     def data(self):
         return _fetch_notebook_data(self.node)
 
@@ -136,6 +146,16 @@ class Notebook(object):
 
 def _get_papermill_metadata(nb, name, default=None):
     return nb.metadata.get('papermill', {}).get(name, default)
+
+
+def _get_cell_exec_durations(nb):
+    ret = []
+    for cell in nb.cells:
+        exec_index = cell.execution_count
+        value = cell.metadata.get('papermill', {}).get('duration')
+        ret.append((exec_index, value))
+    return ret
+
 
 
 def _get_notebook_outputs(nb_node):

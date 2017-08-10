@@ -34,6 +34,13 @@ class PapermillExecutePreprocessor(ExecutePreprocessor):
 
         return nb, resources
 
+    def run_cell(self, cell, cell_index=0):
+        """Wraps the original run_cell so we can get the cell execution duration."""
+        t0 = time.time()
+        ret = super(PapermillExecutePreprocessor, self).run_cell(cell, cell_index=cell_index)
+        cell.metadata['papermill']['duration'] = time.time() - t0
+        return ret
+
 
 def execute_notebook(notebook, output, parameters=None, kernel_name=None):
     """Executes a single notebook locally.

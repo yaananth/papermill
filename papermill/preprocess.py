@@ -6,6 +6,8 @@ import sys
 from nbconvert.preprocessors import ExecutePreprocessor
 from nbconvert.preprocessors.execute import CellExecutionError
 
+import html2text
+
 
 class PapermillExecutePreprocessor(ExecutePreprocessor):
     """Module containing a preprocessor that executes the code cells
@@ -73,8 +75,12 @@ class PapermillExecutePreprocessor(ExecutePreprocessor):
             elif output.name == "stderr":
                 # In case users want to redirect stderr differently, pipe to warning
                 self.log.warning("".join(output.text))
+        elif "data" in output and "text/html" in output.data:
+            data = html2text.html2text(output.data['text/html'])
+            self.log.info("".join(data))
         elif "data" in output and "text/plain" in output.data:
             self.log.info("".join(output.data['text/plain']))
+        
         # Force a flush to avoid long python buffering for messages
         sys.stdout.flush()
         sys.stderr.flush()

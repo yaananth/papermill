@@ -70,7 +70,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 setup(
     name='papermill-nb-runner',
     version=version(),
-    description='Parametrize and run Jupyter and nteract Notebooks',
+    description='Use papermill in CI/CD.',
     author='Yash',
     author_email='yashanantha@outlook.com',
     license='BSD',

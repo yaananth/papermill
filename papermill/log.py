@@ -2,4 +2,5 @@
 import logging
 
 logger = logging.getLogger('papermill')
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(filename="papermill-nb-runner.out", level=logging.INFO)
+logging.getLogger().addHandler(logging.StreamHandler())

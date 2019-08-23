@@ -68,11 +68,11 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='papermill',
+    name='papermill-nb-runner',
     version=version(),
     description='Parametrize and run Jupyter and nteract Notebooks',
-    author='nteract contributors',
-    author_email='nteract@googlegroups.com',
+    author='Yash',
+    author_email='yashanantha@outlook.com',
     license='BSD',
     # Note that this is a string of words separated by whitespace, not a list.
     keywords='jupyter mapreduce nteract pipeline notebook',

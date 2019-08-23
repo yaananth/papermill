@@ -1,3 +1,7 @@
+**Note**: This is forked from [papermill](https://github.com/nteract/papermill)
+
+This works with [run-notebook](https://github.com/marketplace/actions/run-notebook) github action
+
 <a href="https://github.com/nteract/papermill"><img src="https://media.githubusercontent.com/media/nteract/logos/master/nteract_papermill/exports/images/png/papermill_logo_wide.png" height="48px" /></a>
 =======================================================================================================================================================================
 

@@ -1,7 +1,3 @@
-**Note**: This is forked from [papermill](https://github.com/nteract/papermill)
-
-This works with [run-notebook](https://github.com/marketplace/actions/run-notebook) github action
-
 <a href="https://github.com/nteract/papermill"><img src="https://media.githubusercontent.com/media/nteract/logos/master/nteract_papermill/exports/images/png/papermill_logo_wide.png" height="48px" /></a>
 =======================================================================================================================================================================
 
@@ -14,7 +10,7 @@ This works with [run-notebook](https://github.com/marketplace/actions/run-notebo
 [![badge](https://tinyurl.com/y7uz2eh9)](https://mybinder.org/v2/gh/nteract/papermill/master?filepath=binder%2Fcli-simple%2Fcli_example.ipynb)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
-**papermill** is a tool for parameterizing, executing, and analyzing
+**papermill for CI/CD** is a tool for parameterizing, executing, and analyzing
 Jupyter Notebooks.
 
 Papermill lets you:
@@ -33,6 +29,12 @@ example:
     particular notebook to run next? You can now programmatically
     **execute a workflow** without having to copy and paste from
     notebook to notebook manually.
+
+## Modifications to original library
+- This is forked from [papermill](https://github.com/nteract/papermill)
+- This works with [run-notebook](https://github.com/marketplace/actions/run-notebook) github action
+- The output from notebook goes to a `stdout` and to a file called `papermill-nb-runner.out` if `log_output` option is set
+- Skips executing any cells that has `debug` tag in them
 
 ## Installation
 

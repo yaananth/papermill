@@ -180,6 +180,8 @@ class NotebookExecutionManager(object):
         if self.log_output:
             ceel_num = cell_index + 1 if cell_index is not None else ''
             logger.info('Executing Cell {:-<40}'.format(ceel_num))
+            previewSource = "".join(str(x) for x in cell.source)
+            logger.info("Contents: %s" % format(previewSource))
 
         cell.metadata.papermill['start_time'] = self.now().isoformat()
         cell.metadata.papermill["status"] = self.RUNNING
@@ -199,6 +201,10 @@ class NotebookExecutionManager(object):
         cell.metadata.papermill['exception'] = True
         cell.metadata.papermill['status'] = self.FAILED
         self.nb.metadata.papermill['exception'] = True
+        if self.log_output:
+            logger.info('Cell execution failed!!')
+            for key, value in kwargs.items(): 
+                logger.info("%s == %s" %( str(key), str(value) ))
 
     @catch_nb_assignment
     def cell_complete(self, cell, cell_index=None, **kwargs):

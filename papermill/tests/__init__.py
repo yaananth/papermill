@@ -1,6 +1,8 @@
 import os
 import sys
 
+os.environ['papermill-nb-runner'] = True
+
 try:
     from StringIO import StringIO
 except ImportError:

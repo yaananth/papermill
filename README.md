@@ -36,6 +36,7 @@ example:
 - The output from notebook goes to a `stdout` and to a file called `papermill-nb-runner.out` if `log_output` option is set
 - Skips executing any cells that has `debug` tag in them
 - Writes errors to `stderr` and other levels to `stdout`
+- Sets environment variable `papermill-nb-runner` to `true`, so that notebook can check for it's existence and condition cells based on context of where the notebook is running
 
 ## Installation
 

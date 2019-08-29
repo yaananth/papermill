@@ -35,6 +35,7 @@ example:
 - This works with [run-notebook](https://github.com/marketplace/actions/run-notebook) github action
 - The output from notebook goes to a `stdout` and to a file called `papermill-nb-runner.out` if `log_output` option is set
 - Skips executing any cells that has `debug` tag in them
+- Writes errors to `stderr` and other levels to `stdout`
 
 ## Installation
 

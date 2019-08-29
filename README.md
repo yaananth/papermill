@@ -37,6 +37,14 @@ example:
 - Skips executing any cells that has `debug` tag in them
 - Writes errors to `stderr` and other levels to `stdout`
 - Sets environment variable `papermill-nb-runner` to `true`, so that notebook can check for it's existence and condition cells based on context of where the notebook is running
+    
+    Eg:
+    
+    ```
+    import os
+    if "papermill-nb-runner" in os.environ:
+        print("I am getting executed by papermill")
+    ```
 
 ## Installation
 
